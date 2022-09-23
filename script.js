@@ -87,17 +87,17 @@ class Player {
   }
 
   draw(context) {
-    context.strokeStyle = 'white';
-    context.strokeRect(this.x, this.y, this.width, this.height);
-    context.beginPath();
-    context.arc(
-      this.x + this.width / 2,
-      this.y + this.height / 2,
-      this.width / 2,
-      0,
-      Math.PI * 2
-    );
-    context.stroke();
+    // context.strokeStyle = 'white';
+    // context.strokeRect(this.x, this.y, this.width, this.height);
+    // context.beginPath();
+    // context.arc(
+    //   this.x + this.width / 2,
+    //   this.y + this.height / 2,
+    //   this.width / 2,
+    //   0,
+    //   Math.PI * 2
+    // );
+    // context.stroke();
     context.drawImage(
       this.image,
       this.frameX * this.width,
@@ -114,10 +114,10 @@ class Player {
   update(input, deltaTime, enemies) {
     //collision detection
     enemies.forEach((enemy) => {
-      const dx = enemy.x + enemy.width / 2 - (this.x + this.width / 2);
+      const dx = enemy.x + enemy.width / 2 - 20 - (this.x + this.width / 2);
       const dy = enemy.y + enemy.height / 2 - (this.y + this.height / 2);
       const distance = Math.sqrt(dx * dx + dy * dy);
-      if (distance < enemy.width / 2 + this.width / 2) {
+      if (distance < enemy.width / 3 + this.width / 2) {
         gameOver = true;
       }
     });
@@ -220,17 +220,17 @@ class Enemy {
     this.markedForDeletion = false;
   }
   draw(context) {
-    context.strokeStyle = 'white';
-    // context.strokeRect(this.x, this.y, this.width, this.height);
-    context.beginPath();
-    context.arc(
-      this.x + this.width / 2,
-      this.y + this.height / 2,
-      this.width / 2,
-      0,
-      Math.PI * 2
-    );
-    context.stroke();
+    // context.strokeStyle = 'white';
+    // // context.strokeRect(this.x, this.y, this.width, this.height);
+    // context.beginPath();
+    // context.arc(
+    //   this.x + this.width / 2 - 20,
+    //   this.y + this.height / 2,
+    //   this.width / 3,
+    //   0,
+    //   Math.PI * 2
+    // );
+    // context.stroke();
     context.drawImage(
       this.image,
       this.frameX * this.width,
